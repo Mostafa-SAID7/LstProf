@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+@model HomeViewModel
+
+
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-6 text-center">Portfolio</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Example portfolio items -->
+            <div class="bg-gray-100 p-4 rounded shadow hover:scale-105 transition transform">
+                <img src="~/images/Projects/p4.png" alt="Project 1" class="rounded mb-4">
+                <h3 class="font-semibold text-lg">Project 1</h3>
+                <p class="text-gray-600">A brief description of this project.</p>
+            </div>
+            <div class="bg-gray-100 p-4 rounded shadow hover:scale-105 transition transform">
+                <img src="~/images/Projects/p2.png" alt="Project 2" class="rounded mb-4">
+                <h3 class="font-semibold text-lg">Project 2</h3>
+                <p class="text-gray-600">A brief description of this project.</p>
+            </div>
+            <div class="bg-gray-100 p-4 rounded shadow hover:scale-105 transition transform">
+                <img src="~/images/Projects/p1.png" alt="Project 3" class="rounded mb-4">
+                <h3 class="font-semibold text-lg">Project 3</h3>
+                <p class="text-gray-600">A brief description of this project.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Last Projects Section -->
+<section id="last-projects" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-6 text-center">Latest Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+                @foreach (var project in Model.LatestProjects)
+                {
+                    <div class="bg-white p-4 rounded shadow hover:scale-105 transition transform">
+                        <img src="@Url.Content(project.ImageUrl)" alt="@project.Title" class="rounded mb-4">
+                        <h3 class="font-semibold text-lg">@project.Title</h3>
+                        <p class="text-gray-600">@project.Description</p>
+                    </div>
+                }
+          
+            </div>
+    </div>
+</section>
+
+<!-- Last Blogs Section -->
+<section id="last-blogs" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-6 text-center">Latest Blogs</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @foreach (var blog in Model.LatestBlogs)
+            {
+                <div class="bg-gray-100 p-6 rounded shadow hover:scale-105 transition transform">
+                    <img src="@Url.Content(blog.FeaturedImageUrl)" alt="@blog.Title" class="rounded mb-4">
+                    <h3 class="font-semibold text-xl mb-2">@blog.Title</h3>
+                    <p class="text-gray-600 mb-2">@blog.Content</p>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+<!-- Resume Section -->
+<section id="resume" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-6 text-center">Resume</h2>
+        <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto">
+            Download my <a href="/images/files/AsFullStack.pdf" class="text-blue-600 underline">Resume (PDF)</a>.
+        </p>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-6 text-center">Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gray-100 p-6 rounded shadow hover:scale-105 transition transform text-center">
+                <i class="fas fa-code fa-3x text-blue-600 mb-4"></i>
+                <h3 class="font-semibold text-xl mb-2">Web Development</h3>
+                <p class="text-gray-600">Building modern responsive websites.</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded shadow hover:scale-105 transition transform text-center">
+                <i class="fas fa-mobile-alt fa-3x text-blue-600 mb-4"></i>
+                <h3 class="font-semibold text-xl mb-2">Mobile Apps</h3>
+                <p class="text-gray-600">Cross-platform mobile app development.</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded shadow hover:scale-105 transition transform text-center">
+                <i class="fas fa-cloud fa-3x text-blue-600 mb-4"></i>
+                <h3 class="font-semibold text-xl mb-2">Cloud Solutions</h3>
+                <p class="text-gray-600">Deploying secure cloud-based applications.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Privacy Section -->
+<section id="privacy" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-6 text-center">Privacy Policy</h2>
+        <p class="text-gray-700 text-center max-w-3xl mx-auto">
+            Your privacy is important to us. We never share your personal information without consent.
+        </p>
+    </div>
+</section>

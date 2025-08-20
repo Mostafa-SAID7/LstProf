@@ -1,0 +1,185 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    bool isHome = currentController == "Home" && currentAction == "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LstProf</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <header class="bg-gray-900 text-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="/" class="flex items-center space-x-2">
+                <img src="~/images/Main/mylogo-icon.png" alt="Logo Icon" class="w-8 h-8" />
+                <span class="font-bold text-lg">Mostafa</span>
+            </a>
+            <nav class="space-x-6 hidden md:flex">
+                <a href="/" class="hover:text-blue-400 @(isHome ? "text-blue-400" : "")">Home</a>
+                <a href="/Home/About" class="hover:text-blue-400">About</a>
+                <a href="/Home/Portfolio" class="hover:text-blue-400">Portfolio</a>
+                <a href="/Home/Services" class="hover:text-blue-400">Services</a>
+                <a href="/Home/Resume" class="hover:text-blue-400">Resume</a>
+                <a href="/Home/Privacy" class="hover:text-blue-400">Privacy</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="flex-grow">
+
+        @if (isHome)
+        {
+            <!-- Hero Section -->
+            <section class="relative bg-gray-900 text-white min-h-[90vh] flex items-center py-10 overflow-hidden">
+                <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+
+                    <!-- Text Content -->
+                    <div class="animate-fadeInUp">
+                        <h1 class="text-5xl font-bold mb-4">
+                            Hi, I’m <span class="text-blue-400 drop-shadow-glow">Mostafa</span>
+                        </h1>
+                        <p class="text-lg mb-6 leading-relaxed animate-fadeIn delay-200">
+                            Welcome to my portfolio website. I am passionate about building modern web apps with
+                            <span class="font-semibold text-blue-300">ASP.NET Core</span>,
+                            <span class="font-semibold text-purple-300">TailwindCSS</span>, and more.
+                        </p>
+                        <div class="flex space-x-4 animate-fadeIn delay-300">
+                            <a href="/Home/Portfolio"
+                               class="px-6 py-3 rounded-lg bg-blue-500 text-white font-semibold shadow-neon transition transform hover:scale-105 hover:shadow-neon-strong">
+                                🚀 View My Work
+                            </a>
+                            <a href="/images/Files/AsFullStack.pdf"
+                               class="px-6 py-3 rounded-lg bg-gray-700 text-white font-semibold shadow-md transition transform hover:scale-105 hover:shadow-neon-gray">
+                                📄 Download Resume
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="relative flex justify-center animate-fadeInRight">
+                        <img src="~/images/Main/mostafa.png" alt="Mostafa"
+                             class="rounded-2xl w-80 h-80 object-cover shadow-neon border-4 border-blue-400 transform hover:scale-105 hover:shadow-neon-strong transition duration-500 ease-in-out" />
+                    </div>
+
+                </div>
+
+                <!-- Background logo watermark with slow pulse -->
+                <div class="absolute top-6 left-6 opacity-10 animate-pulse">
+                    <img src="~/images/Main/mylogo.png" alt="My Logo" class="w-40" />
+                </div>
+            </section>
+
+            <!-- Extra Tailwind Custom Classes -->
+            <style>
+                /* Custom neon shadows */
+                .shadow-neon {
+                    box-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
+                }
+
+                .hover\:shadow-neon-strong:hover {
+                    box-shadow: 0 0 25px rgba(0, 191, 255, 0.9), 0 0 50px rgba(0, 191, 255, 0.7);
+                }
+
+                .hover\:shadow-neon-gray:hover {
+                    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.4);
+                }
+
+                .drop-shadow-glow {
+                    text-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.6);
+                }
+
+                /* Keyframe animations */
+                @@keyframes fadeInUp {
+                    from
+
+                {
+                    opacity: 0;
+                    transform: translateY(40px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                }
+                @@keyframes fadeInRight {
+                    from
+
+                {
+                    opacity: 0;
+                    transform: translateX(40px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+
+                }
+                @@keyframes fadeIn {
+                    from
+
+                {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+
+                }
+
+                .animate-fadeInUp {
+                    animation: fadeInUp 1s ease-out forwards;
+                }
+
+                .animate-fadeInRight {
+                    animation: fadeInRight 1.2s ease-out forwards;
+                }
+
+                .animate-fadeIn {
+                    animation: fadeIn 1.5s ease-out forwards;
+                }
+
+                .delay-200 {
+                    animation-delay: 0.2s;
+                }
+
+                .delay-300 {
+                    animation-delay: 0.3s;
+                }
+            </style>
+        }
+
+        <div class="container mx-auto px-6 py-8">
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-4">
+        <div class="container mx-auto flex flex-col items-center">
+            <img src="~/images/Main/mylogo.png" alt="Footer Logo" class="w-16 mb-2" />
+            <p>&copy; @DateTime.Now.Year - Mostafa Portfolio</p>
+            <div class="flex space-x-4 mt-2">
+                <a href="#" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
+                <a href="#" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
